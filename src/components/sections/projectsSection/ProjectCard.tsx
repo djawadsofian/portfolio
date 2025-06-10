@@ -1,7 +1,6 @@
 import React from "react";
-import GlassCard from "../../common/GlassCard";
-import type { Project } from "./project.types";
 import { FiExternalLink, FiGithub, FiStar, FiCode, FiEye } from "react-icons/fi";
+import type { Project } from "./project.types";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,26 +12,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
 
   return (
     <div className="group">
-      <GlassCard 
-        className="overflow-hidden md:h-[60vh] bg-black/30 backdrop-blur-xl border border-yellow-400/20 hover:border-yellow-400/40"
-        hover
-      >
+      <div className="overflow-hidden md:h-[60vh] bg-black/30 backdrop-blur-sm border border-yellow-400/20 rounded-xl hover:border-yellow-400/40 transition-colors duration-300">
         {/* Project Image */}
-        <div className="relative overflow-hidden h-48 group">
+        <div className="relative overflow-hidden h-48">
           <img
             src={images[0]}
             alt={project.title}
             className="w-full h-full object-cover object-center"
+            loading="lazy"
           />
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
           
           {/* Status Badge */}
           <div className="absolute top-3 left-3">
-            <span className={`px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
               project.status === "Completed"
-                ? "bg-green-500/20 text-green-300 border border-green-500/30"
-                : "bg-yellow-500/20 text-yellow-300 border border-yellow-500/30"
+                ? "bg-green-500/20 text-green-300"
+                : "bg-yellow-500/20 text-yellow-300"
             }`}>
               {project.status}
             </span>
@@ -40,10 +35,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
 
           {/* Featured Badge */}
           {project.featured && (
-            <div className="absolute top-3 right-3">
-              <div className="p-1.5 bg-yellow-400/20 rounded-full backdrop-blur-sm border border-yellow-400/30">
-                <FiStar className="w-3 h-3 text-yellow-400" />
-              </div>
+            <div className="absolute top-3 right-3 p-1.5 bg-yellow-400/20 rounded-full">
+              <FiStar className="w-3 h-3 text-yellow-400" />
             </div>
           )}
 
@@ -51,16 +44,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
           <div className="absolute bottom-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onViewDetails(project)}
-              className="p-2 bg-black/60 rounded-full backdrop-blur-sm border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
+              className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
             >
-              <FiEye className="cursor-pointer w-4 h-4" />
+              <FiEye className="w-4 h-4" />
             </button>
             
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-black/60 rounded-full backdrop-blur-sm border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
+              className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
             >
               <FiGithub className="w-4 h-4" />
             </a>
@@ -70,13 +63,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-black/60 rounded-full backdrop-blur-sm border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
+                className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
               >
                 <FiExternalLink className="w-4 h-4" />
               </a>
             )}
           </div>
-        
         </div>
 
         {/* Project Content */}
@@ -87,7 +79,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
               <FiCode className="w-3 h-3" />
               <span>{project.category}</span>
             </div>
-            <h3 className="text-lg font-bold text-white group-hover:text-yellow-400">
+            <h3 className="text-lg font-bold text-white">
               {project.title}
             </h3>
           </div>
@@ -102,7 +94,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
             {project.tech.slice(0, 3).map((technology, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs font-medium border border-yellow-400/20"
+                className="px-2 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs font-medium"
               >
                 {technology}
               </span>
@@ -133,20 +125,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
                   rel="noopener noreferrer"
                   className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 text-sm"
                 >
-                  <FiExternalLink className="cursor-pointer w-3 h-3" />
+                  <FiExternalLink className="w-3 h-3" />
                   <span>Live</span>
                 </a>
               )}
             </div>
             <button
               onClick={() => onViewDetails(project)}
-              className="cursor-pointer text-sm text-yellow-400 hover:text-yellow-300 font-medium"
+              className="text-sm text-yellow-400 hover:text-yellow-300 font-medium"
             >
               Details →
             </button>
           </div>
         </div>
-      </GlassCard>
+      </div>
     </div>
   );
 };

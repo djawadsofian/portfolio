@@ -59,11 +59,10 @@ const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Experience", path: "/experience" },
+    { name: "Contact", path: "/contact" }
   ];
 
   return (
@@ -134,7 +133,7 @@ const Footer: React.FC = () => {
                 {quickLinks.map((link, index) => (
                   <motion.a
                     key={index}
-                    href={link.href}
+                    href={link.path}
                     className="block text-gray-400 dark:text-gray-500 hover:text-yellow-400 transition-colors duration-300 group"
                     initial={{ opacity: 0, x: -10 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
