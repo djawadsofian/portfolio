@@ -7,6 +7,7 @@ import { FiCalendar, FiMapPin, FiBookOpen, FiBriefcase } from "react-icons/fi";
 import esiLogo from "../images/Logo-Complet-ESI-SBA-200mm-x-200mm_couleur-1024x1024.png";
 import ovaLogo from "../images/ovaLogo.jpeg";
 import withLayout from "../hoc/WithLayout";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
 
 interface ExperienceCardProps {
   experience: {
@@ -292,8 +293,10 @@ const Experience: React.FC = () => {
           ))}
         </motion.div>
       </div>
+     <TestimonialsSection />
     </motion.section>
   );
+
 };
 
 export default withLayout(Experience);

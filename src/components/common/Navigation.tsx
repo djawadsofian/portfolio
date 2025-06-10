@@ -17,6 +17,7 @@ const Navigation: React.FC = () => {
   const navigateToPage = useCallback((path: string) => {
     setShowMenu(false);
     navigate(path);
+    window.scrollTo(0, 0);
   }, [navigate]);
 
   const toggleMenu = useCallback(() => setShowMenu(prev => !prev), []);

@@ -122,7 +122,7 @@ const HeroSection: React.FC = () => {
             animate="animate"
             transition={{ duration: 0.6 }}
           >
-            <div className="space-y-3 lg:space-y-4 mt-10">
+            <div className="space-y-3 lg:space-y-4 mt-20 md:mt-10">
               <motion.h1
                 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
                 variants={fadeInUp}
