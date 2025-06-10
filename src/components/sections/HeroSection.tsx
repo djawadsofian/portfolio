@@ -4,6 +4,7 @@ import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiInstagram } from "react-ic
 import Typewriter from "../common/Typewriter";
 import ParticlesBackground from "../common/ParticlesBackground";
 import profile from "../../images/profile.png";
+import { useNavigate } from "react-router-dom";
 
 // Animation variants
 const fadeInUp: Variants = {
@@ -88,11 +89,9 @@ const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const navigate = useNavigate();
 
-  const handleScrollToContact = useCallback(() => {
-    const contact = document.getElementById("contact");
-    contact?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+
 
   const orbitingDots = useMemo(
     () => Array.from({ length: 6 }, (_, i) => <OrbitingDot key={i} index={i} total={6} />),
@@ -122,7 +121,7 @@ const HeroSection: React.FC = () => {
             animate="animate"
             transition={{ duration: 0.6 }}
           >
-            <div className="space-y-3 lg:space-y-4 mt-20 md:mt-10">
+            <div className="space-y-3 lg:space-y-4 mt-16 md:mt-10">
               <motion.h1
                 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
                 variants={fadeInUp}
@@ -162,7 +161,7 @@ const HeroSection: React.FC = () => {
               transition={{ delay: 0.8 }}
             >
               <motion.button
-                onClick={handleScrollToContact}
+                onClick={()=>navigate("/contact")}
                 className="cursor-pointer border-2 border-yellow-400 text-yellow-400 px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.98 }}
