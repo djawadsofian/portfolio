@@ -14,3 +14,10 @@ image: string[];
 }
 
 export type FilterCategory = "All" | "Full Stack Application" | "Frontend Application";
+
+declare module 'react' {
+  interface StyleHTMLAttributes<T> extends HTMLAttributes<T> {
+    jsx?: boolean;
+    global?: boolean;
+  }
+}

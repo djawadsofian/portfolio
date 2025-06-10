@@ -5,7 +5,6 @@ import { useProjects } from "../../../hooks/useProjects";
 import ProjectCard from "./ProjectCard";
 import GlassCard from "../../common/GlassCard";
 import ProjectDialog from "./projectDialog";
-import { href } from "react-router-dom";
 
 const ProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

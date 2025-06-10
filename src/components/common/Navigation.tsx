@@ -187,7 +187,7 @@ const Navigation: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 animate-fade-in" />
       )}
       
-      <style jsx>{`
+      <style jsx={true}>{`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }

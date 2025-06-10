@@ -1,6 +1,3 @@
-import { type Config } from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
-
 export type Color = string | { [key: number]: string };
 export type Colors = { [key: string]: Color };
 
