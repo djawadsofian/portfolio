@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo } from "react";
 import { motion, useTransform, useScroll, type Variants } from "framer-motion";
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiInstagram } from "react-icons/fi";
 import Typewriter from "../common/Typewriter";
