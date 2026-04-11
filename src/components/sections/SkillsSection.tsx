@@ -24,7 +24,7 @@ const SkillCard = ({
 }: {
   skill: { name: string; category: string; img: string };
 }) => {
-  const needsWhiteBg = skill.name === "GitHub"; // Only GitHub needs white bg
+  const needsWhiteBg = skill.name === "GitHub" || skill.name === "Django";
 
   return (
     <div className="w-28 sm:w-40 aspect-square cursor-default">
@@ -103,6 +103,9 @@ const SkillsSection = () => {
     ];
 
     const skills2 = [
+      { name: "Django", category: "Backend", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+      { name: "DRF", category: "Backend", img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23a21f1f' rx='20'/%3E%3Ctext x='50' y='55' fill='white' font-family='Arial' font-size='30' font-weight='bold' text-anchor='middle' alignment-baseline='middle'%3EDRF%3C/text%3E%3C/svg%3E" },
+      { name: "PostgreSQL", category: "Backend", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
       { name: "Firebase", category: "Backend", img: firebase },
       { name: "SQL", category: "Backend", img: sql },
       { name: "MySQL", category: "Backend", img: mysql },
@@ -174,25 +177,7 @@ const SkillsSection = () => {
           <ScrollingRow skills={skills2} direction="right" />
         </div>
 
-        {/* Category summary */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          {categorySummary.map((item) => (
-            <div
-              key={item.category}
-              className="p-4 text-center bg-black/25 backdrop-blur-sm border border-yellow-400/20 rounded-2xl"
-            >
-              <div className="text-2xl font-bold text-yellow-400 mb-1">
-                {item.count}+
-              </div>
-              <div className="text-gray-300 text-sm">{item.category}</div>
-            </div>
-          ))}
-        </motion.div>
+
       </div>
 
       <style jsx global>{`

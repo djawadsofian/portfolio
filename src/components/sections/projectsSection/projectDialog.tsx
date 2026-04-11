@@ -68,11 +68,11 @@ const ProjectDialog: React.FC<ProjectDialogProps> = ({
               <CarouselContent>
                 {images.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative overflow-hidden rounded-lg">
+                    <div className="relative overflow-hidden rounded-lg bg-black/40 border border-yellow-400/10 flex items-center justify-center h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh]">
                       <img
                         src={image}
                         alt={`${project.title} - Image ${index + 1}`}
-                        className="h-48 w-full object-cover object-center sm:h-64 md:h-80 lg:h-96"
+                        className="max-w-full max-h-full w-auto h-auto object-contain"
                       />
                     </div>
                   </CarouselItem>
@@ -132,15 +132,17 @@ const ProjectDialog: React.FC<ProjectDialogProps> = ({
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3 pt-4 sm:flex-row">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-full items-center justify-center space-x-2 rounded-lg border border-yellow-400/30 bg-yellow-400/20 px-4 py-2.5 font-medium text-yellow-400 hover:bg-yellow-400/30 sm:w-auto"
-            >
-              <FiGithub className="h-4 w-4" />
-              <span>View Code</span>
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center space-x-2 rounded-lg border border-yellow-400/30 bg-yellow-400/20 px-4 py-2.5 font-medium text-yellow-400 hover:bg-yellow-400/30 sm:w-auto"
+              >
+                <FiGithub className="h-4 w-4" />
+                <span>View Code</span>
+              </a>
+            )}
             {project.live && (
               <a
                 href={project.live}

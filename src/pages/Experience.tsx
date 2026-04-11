@@ -144,21 +144,6 @@ const Experience: React.FC = () => {
 
   const experiences = [
     {
-      title: "Master's in Computer Science",
-      company_name: "ESI SBA",
-      icon: esiLogo,
-      iconBg: "#ffffff",
-      date: "2022 - Present",
-      location: "Sidi Bel Abbès, Algeria",
-      type: 'education' as const,
-      points: [
-        "Enhancing Software engineering skills at ESI SBA",
-        "Built multiple full-stack projects using modern web and mobile technologies",
-         "Collaborated with peers on team-based projects to solve real-world problems",
-         "Currently focused on backend development and system architecture",
-      ],
-    },
-    {
       title: "Front End Web Developer",
       company_name: "OVA DIGITAL",
       icon: ovaLogo,
@@ -174,18 +159,33 @@ const Experience: React.FC = () => {
       ],
     },
     {
-      title: "Bachelor's in Computer Science",
+      title: "Full Stack Freelance Developer",
+      company_name: "Self-Employed",
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23facc15' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'%3E%3C/path%3E%3C/svg%3E",
+      iconBg: "#111827",
+      date: "2021 - Present",
+      location: "Remote / Global",
+      type: 'experience' as const,
+      points: [
+        "Delivered diverse end-to-end web applications and enterprise platforms for various clients.",
+        "Architected robust, scalable backend systems using Django and Django REST Framework.",
+        "Crafted seamless, responsive frontend user interfaces using React, Next.js, and Tailwind CSS.",
+        "Managed full project lifecycles, from requirement gathering with clients to deployment and maintenance.",
+      ],
+    },
+    {
+      title: "Master's in Computer Science",
       company_name: "ESI SBA",
       icon: esiLogo,
       iconBg: "#ffffff",
-      date: "2020 - 2023",
+      date: "2022 - Present",
       location: "Sidi Bel Abbès, Algeria",
       type: 'education' as const,
       points: [
-        "Focus on Web Technologies and Databases",
-        "Completed multiple academic projects",
-        "Developed strong foundation in computer science fundamentals",
-        "Gained solid foundations in algorithms, data structures, and system design",
+        "Enhancing Software engineering skills at ESI SBA",
+        "Built multiple full-stack projects using modern web and mobile technologies",
+         "Collaborated with peers on team-based projects to solve real-world problems",
+         "Currently focused on backend development and system architecture",
       ],
     },
   ];
@@ -268,9 +268,9 @@ const Experience: React.FC = () => {
         >
           {[
             { number: "1", label: "Degrees" },
-            { number: "1+", label: "Work Experience" },
+            { number: "3+", label: "Work Experience" },
             { number: "10+", label: "Projects" },
-            { number: "3+", label: "Years Learning" },
+            { number: "4+", label: "Years Learning" },
           ].map((stat, index) => (
             <motion.div
               key={index}

@@ -6,11 +6,21 @@ import ProjectCard from "./ProjectCard";
 import GlassCard from "../../common/GlassCard";
 import ProjectDialog from "./projectDialog";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  showLimit?: number;
+  isFullPage?: boolean;
+}
+
+
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showLimit, isFullPage = false }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const { projects } = useProjects();
+  const navigate = useNavigate();
+
+  const displayProjects = showLimit ? projects.slice(0, showLimit) : projects;
 
   const handleProjectSelect = (project: Project): void => {
     setSelectedProject(project);
@@ -37,7 +47,7 @@ const ProjectsSection: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured{" "}
+            {isFullPage ? "All " : "Featured "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Projects
             </span>
@@ -55,7 +65,7 @@ const ProjectsSection: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -71,50 +81,55 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         {/* View More Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mb-12"
-        >
-          <a
-            href="https://github.com/djawadsofian?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block group bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 border-2 border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:from-yellow-400 hover:to-yellow-500 hover:text-black backdrop-blur-sm transition-all"
+        {!isFullPage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center mb-12"
           >
-            <span className="flex items-center space-x-2">
-              <span>View More Projects</span>
-              <FiExternalLink className="w-4 h-4" />
-            </span>
-          </a>
-        </motion.div>
-
-        {/* Project Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+            <button
+              onClick={() => {
+                navigate("/projects");
+                window.scrollTo(0, 0);
+              }}
+              className="inline-block group bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 border-2 border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:from-yellow-400 hover:to-yellow-500 hover:text-black backdrop-blur-sm transition-all"
             >
-              <GlassCard className="p-4 text-center bg-black/30 backdrop-blur-sm border border-yellow-400/20">
-                <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-gray-300 text-sm">
-                  {stat.label}
-                </div>
-              </GlassCard>
-            </motion.div>
-          ))}
-        </motion.div>
+              <span className="flex items-center space-x-2">
+                <span>View All Projects</span>
+                <FiExternalLink className="w-4 h-4" />
+              </span>
+            </button>
+          </motion.div>
+        )}
+
+        
+        {!isFullPage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+              >
+                <GlassCard className="p-4 text-center bg-black/30 backdrop-blur-sm border border-yellow-400/20">
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-300 text-sm">
+                    {stat.label}
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
 
       {/* Project Dialog */}

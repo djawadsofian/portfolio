@@ -43,7 +43,7 @@ interface StatCardProps {
 
 // Constants
 const STATS: StatItem[] = [
-  { number: "3+", label: "Years Experience" },
+  { number: "4+", label: "Years Experience" },
   { number: "10+", label: "Projects Completed" },
   { number: "5+", label: "Team Projects Collaborated On" },
   { number: "100%", label: "Commitment to Learning" },
@@ -51,19 +51,19 @@ const STATS: StatItem[] = [
 
 const SERVICES: ServiceItem[] = [
   {
+    icon: FiLayers,
+    title: "Backend Development",
+    desc: "Django, DRF, Python",
+  },
+  {
     icon: FiCode,
     title: "Frontend Development",
-    desc: "React, TypeScript, Next.js",
+    desc: "React, TypeScript, Next.js, Tailwind",
   },
   {
     icon: FiCode,
     title: "Mobile Development",
-    desc: "JetPack Compose, Kotlin",
-  },
-  {
-    icon: FiLayers,
-    title: "Full Stack Solutions",
-    desc: "End-to-end application development",
+    desc: "Jetpack Compose, Kotlin",
   },
 ];
 
@@ -214,18 +214,17 @@ const About: React.FC = () => {
             }`}
           >
             <p className="text-lg text-gray-200 dark:text-gray-300 leading-relaxed hover:translate-x-1 transition-transform duration-300">
-              I am a passionate React developer currently studying Computer
-              Science at ESI SBA. I specialize in building responsive and
-              dynamic web applications using modern technologies like React,
-              TypeScript, and Tailwind CSS. In addition to web development, I
-              have experience in mobile development using technologies like
-              Kotlin and Jetpack Compose. 
+              I am a passionate Full Stack Developer with over 4 years of experience
+              building end-to-end web applications. I specialize in powering robust backends
+              using Django and Django REST Framework (DRF), while crafting seamless
+              frontend experiences using React, TypeScript, Next.js, and Tailwind CSS.
+              In addition to web development, I also have experience in mobile development
+              using Kotlin and Jetpack Compose.
             </p>
             <p className="text-lg text-gray-200 dark:text-gray-300 leading-relaxed hover:translate-x-1 transition-transform duration-300">
-              I'm currently expanding my skills by
-              learning backend development to become a more versatile full-stack
-              developer. I enjoy turning ideas into user-friendly interfaces and
-              continuously improving through hands-on projects.
+              I enjoy turning complex ideas into complete, user-friendly digital solutions
+              by combining solid server-side architecture with dynamic interfaces, always
+              striving to deliver high-quality code and optimal performance.
             </p>
 
             <div className="space-y-4">

@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <ProjectsSection showLimit={3} />
       <SkillsSection />
-      <ProjectsSection />
     </>
   );
 };

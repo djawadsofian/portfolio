@@ -11,14 +11,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
   const images = Array.isArray(project.image) ? project.image : [project.image];
 
   return (
-    <div className="group">
-      <div className="overflow-hidden md:h-[60vh] bg-black/30 backdrop-blur-sm border border-yellow-400/20 rounded-xl hover:border-yellow-400/40 transition-colors duration-300">
+    <div 
+      className="group cursor-pointer"
+      onClick={() => onViewDetails(project)}
+    >
+      <div className="overflow-hidden bg-black/30 backdrop-blur-sm border border-yellow-400/20 rounded-xl hover:border-yellow-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-400/10 group-hover:-translate-y-1">
         {/* Project Image */}
-        <div className="relative overflow-hidden h-48">
+        <div className="relative aspect-video overflow-hidden border-b border-yellow-400/10 bg-black/40">
           <img
             src={images[0]}
             alt={project.title}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
           
@@ -43,27 +46,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
           {/* Quick Actions */}
           <div className="absolute bottom-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
             <button
-              onClick={() => onViewDetails(project)}
-              className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
+              onClick={(e) => {
+                e.stopPropagation();
+                onViewDetails(project);
+              }}
+              className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20 transition-colors"
             >
               <FiEye className="w-4 h-4" />
             </button>
             
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
-            >
-              <FiGithub className="w-4 h-4" />
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20 transition-colors"
+              >
+                <FiGithub className="w-4 h-4" />
+              </a>
+            )}
             
             {project.live && (
               <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20"
+                onClick={(e) => e.stopPropagation()}
+                className="p-2 bg-black/60 rounded-full border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/20 transition-colors"
               >
                 <FiExternalLink className="w-4 h-4" />
               </a>
@@ -109,15 +119,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
           {/* Action Buttons */}
           <div className="pt-2 flex items-center justify-between">
             <div className="flex space-x-3">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 text-sm"
-              >
-                <FiGithub className="w-3 h-3" />
-                <span>Code</span>
-              </a>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 text-sm"
+                >
+                  <FiGithub className="w-3 h-3" />
+                  <span>Code</span>
+                </a>
+              )}
               {project.live && (
                 <a
                   href={project.live}
