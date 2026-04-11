@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useTransform, useScroll, type Variants } from "framer-motion";
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiInstagram } from "react-icons/fi";
+import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiInstagram, FiDownload } from "react-icons/fi";
 import Typewriter from "../common/Typewriter";
 import profile from "../../images/profile.png";
 import { useNavigate } from "react-router-dom";
@@ -125,12 +125,23 @@ const HeroSection: React.FC = () => {
             >
               <motion.button
                 onClick={()=>navigate("/contact")}
-                className="cursor-pointer border-2 border-yellow-400 text-yellow-400 px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300"
+                className="cursor-pointer bg-yellow-400 text-black px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-xl shadow-yellow-400/20"
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Let's Talk
               </motion.button>
+              
+              <motion.a
+                href="/cv.pdf"
+                download="CV_Djawad_Boufelghed.pdf"
+                className="cursor-pointer flex items-center justify-center space-x-2 border-2 border-yellow-400 text-yellow-400 px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300"
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FiDownload className="w-5 h-5" />
+                <span>Download CV</span>
+              </motion.a>
             </motion.div>
 
             <motion.div
