@@ -91,7 +91,7 @@ const ScrollingRow = ({
 const SkillsSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const { skills1, skills2, categorySummary } = useMemo(() => {
+  const { skills1, skills2 } = useMemo(() => {
     const skills1 = [
       { name: "HTML", category: "Frontend", img: html },
       { name: "CSS", category: "Frontend", img: css },
