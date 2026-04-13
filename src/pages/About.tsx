@@ -190,7 +190,7 @@ const About: React.FC = () => {
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white dark:text-gray-100 sm:text-4xl lg:text-5xl">
             About{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Me
@@ -201,7 +201,7 @@ const About: React.FC = () => {
               inView ? 'w-24' : 'w-0'
             }`}
           />
-          <p className="text-xl text-gray-300 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-gray-300 dark:text-gray-400 sm:text-lg">
             Passionate developer crafting digital solutions with modern
             technologies
           </p>

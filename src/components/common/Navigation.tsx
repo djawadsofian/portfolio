@@ -26,19 +26,17 @@ const Navigation: React.FC = () => {
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-2xl bg-black/60 dark:bg-gray-900/60 shadow-2xl border-b border-yellow-400/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-5">
-          {/* Logo */}
+        <div className="flex justify-between items-center py-3 sm:py-4">
           <div 
-            className="relative group cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="relative group cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
             onClick={() => navigateToPage("/")}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative text-2xl lg:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent px-4 py-2">
+            <div className="relative px-2 py-1 text-xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent sm:px-3 sm:py-2 sm:text-2xl lg:text-3xl">
               &lt;BDS/&gt;
             </div>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <button
@@ -51,24 +49,23 @@ const Navigation: React.FC = () => {
             ))}
           </div>
 
-          {/* Mobile Controls */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="p-2 rounded-full bg-gradient-to-br from-yellow-400/20 to-yellow-500/20 border border-yellow-400/30 backdrop-blur-sm hover:scale-105 transition-transform duration-200"
+              className="rounded-full border border-yellow-400/30 bg-gradient-to-br from-yellow-400/20 to-yellow-500/20 p-2 backdrop-blur-sm transition-transform duration-200 hover:scale-105"
+              aria-label={showMenu ? "Close menu" : "Open menu"}
             >
               <div className={`transition-transform duration-300 ${showMenu ? 'rotate-180' : ''}`}>
                 {showMenu ? (
-                  <FiX className="w-6 h-6 text-yellow-400" />
+                  <FiX className="w-5 h-5 text-yellow-400" />
                 ) : (
-                  <FiMenu className="w-6 h-6 text-yellow-400" />
+                  <FiMenu className="w-5 h-5 text-yellow-400" />
                 )}
               </div>
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence mode="wait">
           {showMenu && (
             <motion.div
@@ -78,16 +75,16 @@ const Navigation: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="backdrop-blur-2xl bg-gradient-to-br from-black/90 to-gray-900/90 border border-yellow-400/10 rounded-2xl mx-4 mb-4 shadow-2xl">
-                <div className="p-6 space-y-2">
+              <div className="mx-2 mb-3 rounded-2xl border border-yellow-400/10 bg-gradient-to-br from-black/90 to-gray-900/90 shadow-2xl backdrop-blur-2xl sm:mx-4 sm:mb-4">
+                <div className="space-y-1 p-3 sm:p-4">
                   {navItems.map((item) => (
                     <button
                       key={item.name}
                       onClick={() => navigateToPage(item.path)}
-                      className="block w-full text-left py-4 px-6 rounded-xl font-medium transition-all duration-300 group touch-manipulation hover:translate-x-1 text-gray-300 hover:text-yellow-400 hover:bg-gradient-to-r hover:from-yellow-400/10 hover:to-yellow-500/10 border border-transparent hover:border-yellow-400/20"
+                      className="group block w-full rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-gray-300 transition-all duration-300 hover:translate-x-1 hover:border-yellow-400/20 hover:bg-gradient-to-r hover:from-yellow-400/10 hover:to-yellow-500/10 hover:text-yellow-400 sm:px-5 sm:text-base"
                     >
                       <span className="cursor-pointer flex items-center">
-                        <span className="cursor-pointer w-2 h-2 bg-yellow-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <span className="mr-3 h-2 w-2 rounded-full bg-yellow-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         {item.name}
                       </span>
                     </button>
@@ -98,8 +95,7 @@ const Navigation: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
-      
-      {/* Bottom border */}
+
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent" />
     </nav>
   );

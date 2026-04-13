@@ -207,7 +207,7 @@ const Experience: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white dark:text-gray-100 sm:text-4xl lg:text-5xl">
             Education &{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Experience
@@ -219,7 +219,7 @@ const Experience: React.FC = () => {
             animate={inView ? { width: 96 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-xl text-gray-300 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-gray-300 dark:text-gray-400 sm:text-lg">
             My academic background and professional journey
           </p>
         </motion.div>

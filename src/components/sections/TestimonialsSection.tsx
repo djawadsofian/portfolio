@@ -138,7 +138,7 @@ const TestimonialsSection: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             What People{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Say
@@ -150,7 +150,7 @@ const TestimonialsSection: React.FC = () => {
             animate={inView ? { width: 96 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           />
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg">
             Testimonials from colleagues, professors, and collaborators
           </p>
         </motion.div>

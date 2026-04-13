@@ -3,7 +3,7 @@ import withLayout from "../hoc/WithLayout";
 
 const Projects = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-4 sm:pt-6">
       <ProjectsSection isFullPage={true} />
     </div>
   );

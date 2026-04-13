@@ -46,7 +46,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showLimit, isFullPage
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             {isFullPage ? "All " : "Featured "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Projects
@@ -58,7 +58,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showLimit, isFullPage
             transition={{ duration: 0.8, delay: 0.3 }}
             className="h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto mb-4"
           />
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg">
             A showcase of my recent work and development expertise
           </p>
         </motion.div>

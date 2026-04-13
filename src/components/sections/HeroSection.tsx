@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useTransform, useScroll, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiInstagram, FiDownload } from "react-icons/fi";
 import Typewriter from "../common/Typewriter";
 import profile from "../../images/profile.png";
@@ -49,44 +49,30 @@ const SocialLink = React.memo(({ social, index }: { social: typeof SOCIAL_LINKS[
   </motion.a>
 ));
 
-
-
 const HeroSection: React.FC = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 100]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const navigate = useNavigate();
-
-
-
-
 
   return (
     <motion.section
-      className="min-h-screen h-screen flex items-center justify-center relative overflow-hidden bg-transparent"
-      style={{ y, opacity }}
+      className="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden bg-transparent"
+      initial="initial"
+      animate="animate"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-yellow-500/5 to-gray-900/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-black/5" />
       </div>
 
-
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
-          {/* Left content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div className="grid min-h-[calc(100vh-7rem)] items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
             className="text-center lg:text-left space-y-6 lg:space-y-8"
             variants={fadeInLeft}
-            initial="initial"
-            animate="animate"
             transition={{ duration: 0.6 }}
           >
-            <div className="space-y-3 lg:space-y-4 mt-16 md:mt-10">
+            <div className="mt-8 space-y-3 sm:mt-10 lg:mt-0 lg:space-y-4">
               <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+                className="text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
                 variants={fadeInUp}
                 transition={{ delay: 0.2 }}
               >
@@ -98,7 +84,7 @@ const HeroSection: React.FC = () => {
               </motion.h1>
 
               <motion.div
-                className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-gray-200 font-light"
+                className="text-lg font-light text-gray-200 sm:text-2xl lg:text-3xl xl:text-4xl"
                 variants={fadeInUp}
                 transition={{ delay: 0.4 }}
               >
@@ -110,7 +96,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             <motion.p
-              className="text-lg lg:text-xl text-gray-300 max-w-2xl"
+              className="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg lg:mx-0 lg:text-xl"
               variants={fadeInUp}
               transition={{ delay: 0.6 }}
             >
@@ -125,8 +111,8 @@ const HeroSection: React.FC = () => {
             >
               <motion.button
                 onClick={()=>navigate("/contact")}
-                className="cursor-pointer bg-yellow-400 text-black px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-xl shadow-yellow-400/20"
-                whileHover={{ scale: 1.03, y: -1 }}
+                className="cursor-pointer rounded-full bg-yellow-400 px-6 py-3 font-semibold text-black shadow-xl shadow-yellow-400/20 transition-all duration-300 hover:bg-yellow-500 lg:px-8 lg:py-4"
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Let's Talk
@@ -135,8 +121,8 @@ const HeroSection: React.FC = () => {
               <motion.a
                 href="/cv.pdf"
                 download="CV_Djawad_Boufelghed.pdf"
-                className="cursor-pointer flex items-center justify-center space-x-2 border-2 border-yellow-400 text-yellow-400 px-6 lg:px-8 py-3 lg:py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all duration-300"
-                whileHover={{ scale: 1.03, y: -1 }}
+                className="cursor-pointer flex items-center justify-center space-x-2 rounded-full border-2 border-yellow-400 px-6 py-3 font-semibold text-yellow-400 transition-all duration-300 hover:bg-yellow-400 hover:text-black lg:px-8 lg:py-4"
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <FiDownload className="w-5 h-5" />
@@ -155,12 +141,9 @@ const HeroSection: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right content - Avatar */}
           <motion.div
             className="flex justify-center lg:justify-end"
             variants={fadeInRight}
-            initial="initial"
-            animate="animate"
             transition={{ duration: 0.6 }}
           >
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96">
@@ -177,13 +160,12 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-
             </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 sm:block lg:bottom-8">
         <FiArrowDown className="w-6 h-6 lg:w-8 lg:h-8 text-yellow-400/70" />
       </div>
     </motion.section>

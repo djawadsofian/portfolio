@@ -68,13 +68,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="relative bg-black/40 border-t border-yellow-400/20 overflow-hidden" ref={ref}>
-      {/* Simplified background - only one subtle gradient */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-radial from-yellow-400/10 to-transparent rounded-full blur-3xl"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="absolute -left-20 -top-20 h-40 w-40 rounded-full bg-yellow-400/10 blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -89,7 +84,7 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="group">
-                <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
                   <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
                     Djawad
                   </span>
@@ -97,26 +92,17 @@ const Footer: React.FC = () => {
                     Boufelghed
                   </span>
                 </h3>
-                <p className="text-gray-400 dark:text-gray-500 text-lg mb-6 max-w-sm">
+                <p className="mb-6 max-w-sm text-base text-gray-400 dark:text-gray-500 sm:text-lg">
                  FrontEnd Developer passionate about creating innovative web solutions and beautiful user experiences.
                 </p>
                 
-                {/* Animated tagline */}
-                <motion.div
+                <div
                   className="flex items-center space-x-2 text-yellow-400 text-sm font-medium"
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.3 }}
                 >
                   <FiCode className="w-4 h-4" />
                   <span>Building the future, one line at a time</span>
-                  <motion.div
-                    animate={{ rotate: [0, 15, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    <FiCoffee className="w-4 h-4" />
-                  </motion.div>
-                </motion.div>
+                  <FiCoffee className="w-4 h-4" />
+                </div>
               </div>
             </motion.div>
 
@@ -164,7 +150,7 @@ const Footer: React.FC = () => {
               </p>
               
               {/* Social icons */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="mb-8 flex flex-wrap gap-4">
                 {socialLinks.map((social, index) => {
                   const Component = social.onClick ? 'button' : 'a';
                   const commonProps = {
@@ -191,7 +177,6 @@ const Footer: React.FC = () => {
                       >
                         <social.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                         
-                        {/* Tooltip */}
                         <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
                           {social.label}
                           {social.onClick && <FiExternalLink className="w-3 h-3 ml-1 inline" />}
@@ -221,7 +206,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom section */}
         <motion.div
           className="border-t border-yellow-400/20 py-8"
           initial={{ opacity: 0 }}
@@ -229,19 +213,12 @@ const Footer: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-600">
               <span>© {new Date().getFullYear()} Made with</span>
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <FiHeart className="w-4 h-4 text-red-400" />
-              </motion.div>
+              <FiHeart className="w-4 h-4 text-red-400" />
               <span>by Djawad Boufelghed</span>
             </div>
 
-            {/* Back to top button */}
             <motion.button
               onClick={scrollToTop}
               className="cursor-pointer group flex items-center space-x-2 px-4 py-2 bg-yellow-400/10 hover:bg-yellow-400/20 border border-yellow-400/30 hover:border-yellow-400/50 rounded-full text-yellow-400 hover:text-yellow-300 transition-all duration-300"

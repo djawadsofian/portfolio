@@ -127,14 +127,14 @@ const Contact: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white dark:text-gray-100 sm:text-4xl lg:text-5xl">
             Get In{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Touch
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto mb-6" />
-          <p className="text-xl text-gray-300 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-gray-300 dark:text-gray-400 sm:text-lg">
             Have a project in mind or want to discuss potential opportunities? Let's connect!
           </p>
         </motion.div>

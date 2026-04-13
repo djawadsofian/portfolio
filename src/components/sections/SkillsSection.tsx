@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 // Import skill logos
@@ -27,24 +26,24 @@ const SkillCard = ({
   const needsWhiteBg = skill.name === "GitHub" || skill.name === "Django";
 
   return (
-    <div className="w-28 sm:w-40 aspect-square cursor-default">
-      <div className="relative w-full h-full bg-black/30 backdrop-blur-sm border border-yellow-400/20 rounded-2xl overflow-hidden p-4 flex flex-col items-center justify-center">
+    <div className="aspect-square w-28 flex-shrink-0 cursor-default sm:w-36 lg:w-40">
+      <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-yellow-400/20 bg-black/30 p-3 backdrop-blur-sm sm:p-4">
         <div
-          className={`w-14 h-14 rounded-full flex items-center justify-center mb-3 ${
+          className={`mb-3 flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14 ${
             needsWhiteBg ? "bg-white" : "bg-white/10"
           }`}
         >
           <img
             src={skill.img}
             alt={skill.name}
-            className="w-10 h-10 object-contain"
+            className="h-8 w-8 object-contain sm:h-10 sm:w-10"
             loading="lazy"
           />
         </div>
-        <h3 className="text-sm font-semibold text-white text-center">
+        <h3 className="text-center text-xs font-semibold text-white sm:text-sm">
           {skill.name}
         </h3>
-        <span className="text-xs text-gray-400 mt-1">{skill.category}</span>
+        <span className="mt-1 text-[11px] text-gray-400 sm:text-xs">{skill.category}</span>
       </div>
     </div>
   );
@@ -57,30 +56,23 @@ const ScrollingRow = ({
   skills: Array<{ name: string; category: string; img: string }>;
   direction: "left" | "right";
 }) => {
-  // Double the array for seamless looping
-  const scrollingSkills = [...skills, ...skills];
+  const orderedSkills = direction === "right" ? [...skills].reverse() : skills;
 
   return (
-    <div className="p-6 bg-black/20 backdrop-blur-sm border border-yellow-400/20 rounded-2xl">
-      <div className="relative h-52 overflow-hidden rounded-xl">
-        {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-black/50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-black/50 to-transparent z-10 pointer-events-none" />
+    <div className="rounded-2xl border border-yellow-400/20 bg-black/20 p-4 backdrop-blur-sm sm:p-6">
+      <div className="relative overflow-hidden rounded-xl">
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-black/60 to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-black/60 to-transparent sm:w-20" />
 
-        {/* Scrolling container */}
         <div
-          className="flex gap-4 absolute top-1/2 -translate-y-1/2"
-          style={{
-            [direction === "left" ? "left" : "right"]: 0,
-            animation: `${
-              direction === "left" ? "scrollLeft" : "scrollRight"
-            } 30s linear infinite`,
-            animationDelay: direction === "right" ? "-15s" : "0s",
-            width: `${scrollingSkills.length * 11}rem`,
-          }}
+          className={`flex w-max gap-4 py-2 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
         >
-          {scrollingSkills.map((skill, i) => (
-            <SkillCard key={`${skill.name}-${i}`} skill={skill} />
+          {[0, 1].map((groupIndex) => (
+            <div key={groupIndex} className="flex gap-4">
+              {orderedSkills.map((skill) => (
+                <SkillCard key={`${groupIndex}-${skill.name}`} skill={skill} />
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -138,50 +130,41 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <motion.section
+    <section
       id="skills"
       className="py-20 relative"
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.6 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+        <div
+          className={`mb-12 text-center transition-all duration-500 sm:mb-16 ${
+            inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             My{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Skills
             </span>
           </h2>
-          <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto mb-6"
-            initial={{ width: 0 }}
-            animate={inView ? { width: "6rem" } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+          <div
+            className={`mx-auto mb-5 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transition-all duration-700 ${
+              inView ? "w-24" : "w-0"
+            }`}
           />
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg">
             Technologies and tools I use to bring ideas to life
           </p>
-        </motion.div>
+        </div>
 
-        {/* Scrolling rows */}
         <div className="space-y-8">
           <ScrollingRow skills={skills1} direction="left" />
           <ScrollingRow skills={skills2} direction="right" />
         </div>
-
-
       </div>
 
       <style jsx global>{`
-        @keyframes scrollLeft {
+        @keyframes marqueeLeft {
           0% {
             transform: translateX(0);
           }
@@ -189,16 +172,30 @@ const SkillsSection = () => {
             transform: translateX(-50%);
           }
         }
-        @keyframes scrollRight {
+        @keyframes marqueeRight {
           0% {
-            transform: translateX(0);
+            transform: translateX(-50%);
           }
           100% {
-            transform: translateX(50%);
+            transform: translateX(0);
+          }
+        }
+        .animate-marquee-left {
+          animation: marqueeLeft 26s linear infinite;
+        }
+        .animate-marquee-right {
+          animation: marqueeRight 30s linear infinite;
+        }
+        @media (max-width: 640px) {
+          .animate-marquee-left {
+            animation-duration: 18s;
+          }
+          .animate-marquee-right {
+            animation-duration: 20s;
           }
         }
       `}</style>
-    </motion.section>
+    </section>
   );
 };
 
