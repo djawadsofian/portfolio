@@ -96,7 +96,6 @@ export const useProjects = () => {
           "Statistics dashboard with project and profit analytics",
         ],
         github: "",
-        live: "http://5.135.241.51/",
         status: "Completed",
         featured: true,
       },
